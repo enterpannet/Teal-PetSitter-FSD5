@@ -1,7 +1,6 @@
 "use client";
 import Footer from "@/components/common/Footer";
 import Navbar from "@/components/common/Navbar";
-
 import SearchBar from "@/components/common/SearchBar";
 import Link from "next/link";
 import Image from "next/image";
@@ -18,10 +17,8 @@ import blueEllipse from "@/asset/images/Ellipse17.svg";
 import halfYellowEllipse from "@/asset/images/half-yellow-ellipse.svg";
 import catAllElement from "@/asset/images/catAllElement.svg";
 import dogAllElement from "@/asset/images/dogAllElement.svg";
-import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import loadingPic from "@/lib/utils/loading.json";
 import { useUser } from "@/hooks/hooks";
-import { el } from "date-fns/locale";
 import Lottie from "react-lottie";
 import { useEffect } from "react";
 import {

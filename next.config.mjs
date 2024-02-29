@@ -5,6 +5,9 @@ const nextConfig = {
   images: {
     domains: ["twbnpazhgudgqhmulgru.supabase.co"],
   },
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  },
 };
 
 // const withImages = require("next-images");
