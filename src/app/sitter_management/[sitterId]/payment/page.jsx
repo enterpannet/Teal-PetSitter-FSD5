@@ -88,18 +88,19 @@ const Payment = () => {
           params.sitterId != sitterId
         ) {
           router.push("/");
-        } else if (user?.user_type === "sitter") {
+        } else if (
+          user?.user_type === "sitter" &&
+          params.sitterId == sitterId
+        ) {
           await Promise.all([getOwnPetData(), getBankNumber()]);
         }
-      } catch (error) {
-      }
+      } catch (error) {}
     };
 
     const fetchUser = async () => {
       try {
         await user;
-      } catch (error) {
-      }
+      } catch (error) {}
     };
 
     fetchUser().then(() => {
