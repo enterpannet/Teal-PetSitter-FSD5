@@ -114,7 +114,7 @@ const Payment = () => {
     };
   }, [user]);
   return (
-    <div className="flex bg-sixthGray justify-center h-screen">
+    <div className="flex bg-sixthGray justify-center h-full">
       <div className="hidden bg-sixthGray lg:block relative">
         <Sidebar active={3} />
       </div>
