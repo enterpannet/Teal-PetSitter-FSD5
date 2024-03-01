@@ -77,10 +77,12 @@ const Navbar = () => {
 
       if (session && session.user) {
         setUserId(session.user.id);
+
         await getUser(session);
         setIsLoading(false);
       } else {
         const storedSession = localStorage.getItem("session");
+        console.log(session);
         if (storedSession) {
           const session = JSON.parse(storedSession);
           setUserId(session.user.id);
