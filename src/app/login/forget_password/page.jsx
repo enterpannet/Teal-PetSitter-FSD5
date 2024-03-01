@@ -40,7 +40,8 @@ function ForgetPassword() {
       const { email } = values;
       try {
         const { error } = await supabase.auth.resetPasswordForEmail(email, {
-          redirectTo: "http://localhost:3000/login/reset_password",
+          redirectTo:
+            "https://teal-pet-sitter-fsd-5.vercel.app/login/reset_password",
         });
         if (error) {
           toast({
@@ -50,8 +51,8 @@ function ForgetPassword() {
             status: "error",
             duration: 9000,
             isClosable: true,
-          });         
-        } else {         
+          });
+        } else {
           toast({
             title: "Password reset email sent",
             position: "top",
@@ -61,8 +62,7 @@ function ForgetPassword() {
             isClosable: true,
           });
         }
-      } catch (error) {      
-      }
+      } catch (error) {}
     }
   }
   return (
