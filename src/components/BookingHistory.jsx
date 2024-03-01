@@ -609,20 +609,20 @@ function BookingHistoryList(props) {
                   <div className="w-full flex flex-col gap-1">
                     <div className="text-fourthGray text-[13px] font-medium md:text-[15px]">
                       <div className="flex gap-[5px]">
-                        Transaction date: {createDay(props.created_at)}
+                        Transaction date : {createDay(props.created_at)}
                       </div>
                     </div>
                     <div className="text-fourthGray text-[13px] font-medium md:text-[15px]">
-                      Transaction No.: {props.transaction_no}
+                      Transaction No. : {props.transaction_no}
                     </div>
                   </div>
 
                   <div className="w-full flex flex-col gap-1">
                     <div className="text-thirdGray text-[13px] font-medium md:text-[14px]">
-                      Pet Sitter:
+                      Pet Sitter :
                     </div>
                     <div className="text-sm font-medium md:text-[15px]">
-                      {props.sitter_name} By {props.full_name}
+                      {props.sitter_name} By {petSitterFullname}
                     </div>
                   </div>
 
