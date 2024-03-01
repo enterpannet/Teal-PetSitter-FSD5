@@ -28,16 +28,7 @@ import {
   useSearchParams,
 } from "next/navigation";
 export default function Home() {
-  const searchParams = useSearchParams();
-
-  const code = searchParams.get("code");
   const router = useRouter();
-
-  useEffect(() => {
-    if (code) {
-      redirect("/");
-    }
-  }, []);
   const { user, setUser, isLoading, setIsLoading } = useUser();
   const options = {
     loop: true,
