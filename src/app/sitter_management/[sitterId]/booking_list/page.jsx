@@ -87,46 +87,25 @@ const BookingList = () => {
 
     return sum;
   }
+
   useEffect(() => {
-    if (
-      user?.user_type === "sitter" &&
-      user?.user_type !== undefined &&
-      user?.user_type !== null
-    ) {
-      getBookingList();
-      const filteredData = getKeywords();
-      setPetData(filteredData);
-    }
-  }, []);
-  useEffect(() => {
-    if (
-      user?.user_type === "sitter" &&
-      user?.user_type !== undefined &&
-      user?.user_type !== null
-    ) {
-      getBookingList();
-      const filteredData = getKeywords();
-      setPetData(filteredData);
-    }
-  }, [keywords, keywordsStatus, dateString]);
-  useEffect(() => {
-    let isMounted = true;
+    console.log("IF 0 โหลดตาม user");
+
     const fetchDataAsync = async () => {
       try {
         if (!user) {
           throw new Error("User data not available");
-        }
-        if (
-          params.sitterId !== undefined &&
-          sitterId !== undefined &&
-          params.sitterId !== null &&
-          sitterId !== null &&
-          params.sitterId != sitterId
-        ) {
-          router.push("/");
-        } else if (user.user_type === "sitter" && params.sitterId == sitterId) {
-          await Promise.all([getBookingList(), getKeywords()]);
-          if (isMounted) {
+        } else if (user) {
+          if (params.sitterId && sitterId && params.sitterId != sitterId) {
+            console.log("IF 1 โหลดตาม user");
+            router.push("/");
+          } else if (
+            user?.user_type === "sitter" &&
+            user?.user_type &&
+            params.sitterId == sitterId
+          ) {
+            console.log("IF 2 โหลดตาม user");
+            getBookingList();
             const filteredData = getKeywords();
             setPetData(filteredData);
           }
@@ -135,11 +114,7 @@ const BookingList = () => {
     };
 
     fetchDataAsync();
-
-    return () => {
-      isMounted = false;
-    };
-  }, [user]);
+  }, [user, keywords, keywordsStatus, dateString]);
   //แปลงข้อมูลวันที่ ที่แสดงออกมาเป็น dd/mm, time-time
   petData.forEach((item) => {
     const startTime = item.start_time.split(":");
