@@ -87,9 +87,23 @@ const BookingList = () => {
 
     return sum;
   }
-
   useEffect(() => {
-    if (user?.user_type === "sitter") {
+    if (
+      user?.user_type === "sitter" &&
+      user?.user_type !== undefined &&
+      user?.user_type !== null
+    ) {
+      getBookingList();
+      const filteredData = getKeywords();
+      setPetData(filteredData);
+    }
+  }, []);
+  useEffect(() => {
+    if (
+      user?.user_type === "sitter" &&
+      user?.user_type !== undefined &&
+      user?.user_type !== null
+    ) {
       getBookingList();
       const filteredData = getKeywords();
       setPetData(filteredData);
