@@ -112,20 +112,32 @@ function BookingHistoryList(props) {
     );
   }
 
-  function changeTime(time) {
-    const startTimeString = time;
-    const dateObject = new Date(`2000-01-01T${startTimeString}`);
-    // The date '2000-01-01' is arbitrary; it's only used to set the time part
+  // function changeTime(time) {
+  //   const startTimeString = time;
+  //   const dateObject = new Date(`2000-01-01T${startTimeString}`);
+  //   // The date '2000-01-01' is arbitrary; it's only used to set the time part
 
-    const hours = dateObject.getHours();
-    const amOrPm = hours >= 12 ? "PM" : "AM";
+  //   const hours = dateObject.getHours();
+  //   const amOrPm = hours >= 12 ? "PM" : "AM";
 
-    // Convert to 12-hour clock format
-    const formattedHours = hours % 12 || 12;
+  //   // Convert to 12-hour clock format
+  //   const formattedHours = hours % 12 || 12;
 
-    return (
-      <div className="text-sm font-medium lg:text-base">{`${formattedHours} ${amOrPm}`}</div>
-    );
+  //   return (
+  //     <div className="text-sm font-medium lg:text-base">{`${formattedHours} ${amOrPm}`}</div>
+  //   );
+  // }
+
+  function cutSeconds(timeString) {
+    // Split the time string into hours, minutes, and seconds
+    const [hours, minutes, seconds] = timeString.split(":");
+
+    // Return the time string with seconds removed
+    if (hours < 12) {
+      return `${hours}:${minutes} AM`;
+    } else if (hours > 12) {
+      return `${hours}:${minutes} PM`;
+    }
   }
 
   function reviewDate(reviewDate) {
@@ -319,9 +331,9 @@ function BookingHistoryList(props) {
                 <div className="text-thirdGray text-[13px] font-medium lg:text-[15px]">
                   Date & Time:
                 </div>
-                <div className="flex w-[220px] gap-[5px] text-sm font-medium lg:text-sm">
-                  {bookDay(props.booking_date)}|{changeTime(props.start_time)}-
-                  {changeTime(props.end_time)}
+                <div className="flex w-[300px] gap-[5px] text-sm font-medium lg:text-base ">
+                  {bookDay(props.booking_date)}| {cutSeconds(props.start_time)}{" "}
+                  - {cutSeconds(props.end_time)}
                 </div>
               </div>
               <hr className="w-full md:hidden" />
