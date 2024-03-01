@@ -71,7 +71,6 @@ export function Sidebar({ active }) {
       .eq("user_id", userId);
     setSitterId(data[0]?.id);
     if (error) {
-     
     }
   }
 
@@ -86,17 +85,13 @@ export function Sidebar({ active }) {
         if (user) {
           await Promise.all([getSitterId()]);
         }
-      } catch (error) {
-      
-      }
+      } catch (error) {}
     };
 
     const fetchUser = async () => {
       try {
         await user;
-      } catch (error) {
-     
-      }
+      } catch (error) {}
     };
 
     fetchUser().then(() => {
@@ -115,13 +110,13 @@ export function Sidebar({ active }) {
     router.push("/");
   };
   return (
-    <div className="w-60 h-[91vh] bg-sixthGray fixed">
+    <div className="w-60 h-full bg-sixthGray fixed ">
       <div className="logo mx-6 my-6">
         <Link href="/">
           <Image src={logo} alt="logoInBlack" />
         </Link>
       </div>
-      <div className="flex flex-col justify-between h-full">
+      <div className="flex flex-col justify-start h-full">
         <div>
           <Link href="/sitter_management">
             <div

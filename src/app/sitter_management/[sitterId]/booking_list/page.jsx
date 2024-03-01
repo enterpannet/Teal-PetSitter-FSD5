@@ -195,7 +195,7 @@ const BookingList = () => {
         .includes(dateString.toLowerCase());
     });
   return (
-    <div className="flex bg-sixthGray justify-center">
+    <div className="flex bg-sixthGray justify-center h-screen">
       <div className="hidden bg-sixthGray lg:block relative">
         <Sidebar active={2} />
       </div>
@@ -276,7 +276,7 @@ const BookingList = () => {
             />
           </Box>
         ) : (
-          <div className="Title flex justify-center items-start  bg-white rounded-3xl lg:h-screen">
+          <div className="Title flex justify-center items-start  bg-white rounded-3xl ">
             <table className=" border-slate-400 min-w-[320px] w-full  md:w-full xl:max-w-[1440px] xl:w-full rounded-3xl overflow-hidden ">
               <thead className="text-white bg-black text-[13px] md:text-[14px]">
                 <tr>

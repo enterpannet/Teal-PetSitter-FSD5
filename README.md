@@ -22,7 +22,9 @@ npm run dev
 
 ## Deploy on Vercel
 
+```bash
 https://teal-pet-sitter-fsd-5.vercel.app/
+```
 
 ## เครดิต
 
