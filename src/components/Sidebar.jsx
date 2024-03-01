@@ -111,13 +111,13 @@ export function Sidebar({ active }) {
     router.push("/");
   };
   return (
-    <div className="w-60 h-[91vh] bg-sixthGray fixed">
+    <div className="w-60 h-full bg-sixthGray fixed ">
       <div className="logo mx-6 my-6">
         <Link href="/">
           <Image src={logo} alt="logoInBlack" />
         </Link>
       </div>
-      <div className="flex flex-col justify-between h-full">
+      <div className="flex flex-col justify-start h-full">
         <div>
           <Link href="/sitter_management">
             <div

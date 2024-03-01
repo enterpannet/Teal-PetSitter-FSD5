@@ -7,9 +7,9 @@
 ## ขั้นตอนในการติดตั้ง
 
 ```bash
-git clone git@github.com:scarecrow-404/pet-sitter.git
+git clone git@github.com:enterpannet/Teal-PetSitter-FSD5.git
 
-cd .\pet-sitter\
+cd .\Teal-PetSitter-FSD5\
 
 npm install
 ```
@@ -21,6 +21,10 @@ npm run dev
 ```
 
 ## Deploy on Vercel
+
+```bash
+https://teal-pet-sitter-fsd-5.vercel.app/
+```
 
 ## เครดิต
 

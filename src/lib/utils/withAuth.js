@@ -15,10 +15,8 @@ export default function withAuth(Component) {
 
     async function getUser(session) {
       if (!session || !session.user) {
-
         return null;
       } else {
-        
         const { data, error } = await supabase
           .from("users")
           .select("*")
@@ -49,18 +47,12 @@ export default function withAuth(Component) {
         setUserId(session?.user?.id);
         const user = await getUser(session);
         setUser(user);
-        if (
-          (pathname === "/sitter_management" && user?.user_type !== "sitter") 
-        ) {
+        if (pathname === "/sitter_management" && user?.user_type !== "sitter") {
           router.push("/");
-        } else if (
-          (pathname === "/sitter_management" && !session)
-        ) {
+        } else if (pathname === "/sitter_management" && !session) {
           router.push("/");
         }
         supabase.auth.onAuthStateChange(async (event, session) => {
-        
-
           if (event === "SIGNED_IN" || event === "INITIAL_SESSION") {
             const currentSession = supabase.auth.session;
 
@@ -73,7 +65,6 @@ export default function withAuth(Component) {
               const user = await getUser(currentSession);
 
               setUser(user);
-          
             }
           } else if (event === "SIGNED_OUT") {
             setUser(null);
