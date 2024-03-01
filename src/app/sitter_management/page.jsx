@@ -796,7 +796,7 @@ const SitterManagement = () => {
         <Sidebar active={1} />
       </div>
       <div className="flex-1 min-w-[375px] mx-auto md:w-auto md:mx-3 bg-sixthGray max-w-[1200px] lg:ml-60">
-        <TopBar />
+        <TopBar active={1} />
         <div className="Title flex justify-between items-center py-3">
           <div className="nameTitle pl-5 text-[22px] font-semibold">
             Pet Sitter Profile

@@ -200,7 +200,7 @@ const BookingList = () => {
         <Sidebar active={2} />
       </div>
       <div className="flex-1 min-w-[320px] md:w-auto md:mx-3 bg-sixthGray max-w-[1200px] lg:ml-60">
-        <TopBar />
+        <TopBar active={2} />
         <div className="Title flex flex-col xl:flex-row justify-between items-center py-3">
           <div className="nameTitle pl-5 text-[16px] md:flex lg:text-[22px] font-semibold">
             Booking List
