@@ -93,6 +93,9 @@ const OrderDetails = () => {
     year: "numeric",
   });
   const formattedDateTimeRange = `${formattedBookingDate} | ${startTime} - ${endTime}`;
+
+  console.log(currentDateString, formattedBookingDate, "date");
+  console.log(ownPet.end_time, currentTime, "time", "date");
   function cutSeconds(time) {
     // Split the time string into hours, minutes, and seconds
     const [hours, minutes, seconds] = time.split(":");
@@ -109,6 +112,7 @@ const OrderDetails = () => {
     getPetDataBooking();
     getOwnPetData();
   }, [status]);
+
   let processStatus = [
     "Waiting for confirm",
     "Waiting for service",
@@ -206,9 +210,11 @@ const OrderDetails = () => {
                       updateBookingStatus();
                     }}
                     disabled={
-                      currentDateString < formattedBookingDate || // ถ้าวันที่ปัจจุบันน้อยกว่าวันที่จอง
-                      (currentDateString === formattedBookingDate &&
-                        currentTime < ownPet.end_time) // ถ้าวันที่ปัจจุบันเท่ากับวันที่จองและเวลาปัจจุบันน้อยกว่าเวลาจอง
+                      new Date(bookingDate.getFullYear(), bookingDate.getMonth(), bookingDate.getDate()).getTime() >
+                        new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()).getTime() || // วันที่จองมากกว่าวันที่ปัจจุบัน
+                      (new Date(bookingDate.getFullYear(), bookingDate.getMonth(), bookingDate.getDate()).getTime() ===
+                        new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()).getTime() &&
+                        ownPet.end_time > currentTime) // วันที่จองเท่ากับวันที่ปัจจุบันและเวลาจองมากกว่าเวลาปัจจุบัน
                     }
                   >
                     Success
@@ -345,9 +351,11 @@ const OrderDetails = () => {
                           }}
                           className="bg-secondOrange text-white rounded-3xl min-w-36 h-10 hover:text-secondOrange hover:bg-fifthOrange disabled:bg-fifthGray disabled:text-fifthGray"
                           disabled={
-                            currentDateString < formattedBookingDate ||
-                            (currentDateString === formattedBookingDate &&
-                              currentTime < ownPet.end_time)
+                            new Date(bookingDate.getFullYear(), bookingDate.getMonth(), bookingDate.getDate()).getTime() >
+                              new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()).getTime() ||
+                            (new Date(bookingDate.getFullYear(), bookingDate.getMonth(), bookingDate.getDate()).getTime() ===
+                              new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()).getTime() &&
+                              ownPet.end_time > currentTime) 
                           }
                         >
                           Success
