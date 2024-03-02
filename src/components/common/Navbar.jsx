@@ -81,7 +81,7 @@ const Navbar = () => {
         await getUser(session);
         setIsLoading(false);
       } else {
-        const storedSession = localStorage.getItem("session");
+        const storedSession = sessionStorage.getItem("session");
         console.log(session);
         if (storedSession) {
           const session = JSON.parse(storedSession);
@@ -95,7 +95,7 @@ const Navbar = () => {
     supabase.auth.onAuthStateChange(async (event, session) => {
       if (event === "SIGNED_IN" || event === "INITIAL_SESSION") {
         if (session) {
-          localStorage.setItem("session", JSON.stringify(session));
+          sessionStorage.setItem("session", JSON.stringify(session));
           setUserId(session.user.id);
           const user = await getUser(session);
 
@@ -113,7 +113,7 @@ const Navbar = () => {
         setIsLoading(false);
         setUser(null);
         setProfileImage(mockPhoto);
-        localStorage.removeItem("session");
+        sessionStorage.removeItem("session");
       }
     });
   }, []);

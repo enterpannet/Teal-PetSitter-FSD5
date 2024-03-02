@@ -10,8 +10,9 @@ export default function withAuth(Component) {
   return function ProtectedRoute(props) {
     const router = useRouter();
     const pathname = usePathname();
-    const [userSession, setUserSession] = useState(null);
-    const { setUser, setUserId, userId } = useUser();
+
+    const { setUser, setUserId, userId, userSession, setUserSession } =
+      useUser();
 
     async function getUser(session) {
       if (!session || !session.user) {
@@ -36,7 +37,7 @@ export default function withAuth(Component) {
           error,
         } = await supabase.auth.getSession();
         if (!session) {
-          const storedSession = localStorage.getItem("supabase.auth.token");
+          const storedSession = sessionStorage.getItem("supabase.auth.token");
           if (storedSession) {
             session = JSON.parse(storedSession);
             supabase.auth.setSession(session);
@@ -57,7 +58,7 @@ export default function withAuth(Component) {
             const currentSession = supabase.auth.session;
 
             if (currentSession) {
-              localStorage.setItem(
+              sessionStorage.setItem(
                 "supabase.auth.token",
                 JSON.stringify(currentSession)
               );
@@ -68,7 +69,7 @@ export default function withAuth(Component) {
             }
           } else if (event === "SIGNED_OUT") {
             setUser(null);
-            localStorage.removeItem("supabase.auth.token");
+            sessionStorage.removeItem("supabase.auth.token");
           }
         });
 
@@ -80,7 +81,7 @@ export default function withAuth(Component) {
       };
 
       fetchSession();
-    }, []);
+    }, [userSession]);
 
     return <Component {...props} />;
   };

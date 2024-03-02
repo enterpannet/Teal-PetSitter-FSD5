@@ -11,6 +11,7 @@ export function UserProvider({ children }) {
   const [user, setUser] = useState(null);
   const [userId, setUserId] = useState(null);
   const [sitterId, setSitterId] = useState(null);
+  const [userSession, setUserSession] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isNewSearch, setIsNewSearch] = useState(true);
   const [search, setSearch] = useState({
@@ -46,6 +47,8 @@ export function UserProvider({ children }) {
         setSitterId,
         isLoading,
         setIsLoading,
+        userSession,
+        setUserSession,
       }}
     >
       {children}
