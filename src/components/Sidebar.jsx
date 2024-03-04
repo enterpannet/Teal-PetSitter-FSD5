@@ -25,9 +25,10 @@ import {
   MenuOptionGroup,
   Avatar,
 } from "@chakra-ui/react";
+import Record from "@/asset/images/record.svg";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import supabase from "@/lib/utils/db";
-import { ro } from "date-fns/locale";
+import { TablerPlayerRecordFilled } from "@/components/Record";
 
 export function Sidebar({ active }) {
   const [imageSrcPetSittetProfile, setImageSrcPetSittetProfile] =
@@ -183,7 +184,7 @@ export function Sidebar({ active }) {
   );
 }
 
-export function TopBar() {
+export function TopBar({ active }) {
   const [count, setCount] = useState(0);
 
   const router = useRouter();
@@ -282,14 +283,24 @@ export function TopBar() {
             variant="outline"
           />
           <MenuList>
+            <Link href="/">
+              <MenuItem>Home</MenuItem>
+            </Link>
             <Link href="/sitter_management">
-              <MenuItem>Pet Sitter Profile</MenuItem>
+              <MenuItem>
+                {active === 1 && <TablerPlayerRecordFilled />}
+                Pet Sitter Profile
+              </MenuItem>
             </Link>
             <Link href={`/sitter_management/${sitterId}/booking_list`}>
-              <MenuItem>Booking List</MenuItem>
+              <MenuItem>
+                {active === 2 && <TablerPlayerRecordFilled />}Booking List
+              </MenuItem>
             </Link>
             <Link href={`/sitter_management/${sitterId}/payment`}>
-              <MenuItem>Payout Option</MenuItem>
+              <MenuItem>
+                {active === 3 && <TablerPlayerRecordFilled />}Payout Option
+              </MenuItem>
             </Link>
             <MenuItem onClick={handleSignOut}>Log Out</MenuItem>
           </MenuList>

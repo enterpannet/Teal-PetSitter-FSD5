@@ -119,7 +119,7 @@ const Payment = () => {
         <Sidebar active={3} />
       </div>
       <div className="flex-1 min-w-[375px] mx-auto md:w-auto md:mx-3 bg-sixthGray max-w-[1200px] lg:ml-60">
-        <TopBar />
+        <TopBar active={3} />
         <div className="Title flex justify-between items-center pt-3 pl-5">
           <div className="nameTitle font-semibold">Payout Option</div>
         </div>
