@@ -195,7 +195,7 @@ const BookingList = () => {
         .includes(dateString.toLowerCase());
     });
   return (
-    <div className="flex bg-sixthGray justify-center h-full">
+    <div className="flex bg-sixthGray justify-center ">
       <div className="hidden bg-sixthGray lg:block relative">
         <Sidebar active={2} />
       </div>
