@@ -60,9 +60,7 @@ function BookingHistoryList(props) {
     } else {
     }
 
-    return (
-      <div className="text-sm font-medium lg:text-base">{duration} hours</div>
-    );
+    return <div className="text-sm font-medium">{duration} hours</div>;
   }
 
   function createDay(timeCreated) {
@@ -107,9 +105,7 @@ function BookingHistoryList(props) {
     const year = dateObject.getFullYear();
     const formattedDate = `${day} ${month}, ${year}`;
 
-    return (
-      <div className="text-sm font-medium lg:text-base">{formattedDate}</div>
-    );
+    return <div className="text-sm font-medium">{formattedDate}</div>;
   }
 
   // function changeTime(time) {
@@ -638,18 +634,19 @@ function BookingHistoryList(props) {
                     </div>
                   </div>
 
-                  <div className="flex flex-col gap-3 md:flex-row md:gap-0 justify-between">
+                  <div className="flex flex-col gap-3 md:flex-row md:gap-0">
                     <div className="w-full flex flex-col gap-1 md:w-[48%]">
                       <div className="text-thirdGray text-[13px] font-medium md:text-[14px]">
                         Date & Time:
                       </div>
-                      <div className="flex gap-[5px] text-sm font-medium md:text-[15px]">
+                      <div className="flex gap-[5px] text-sm font-medium md:text-[14px]">
                         {bookDay(props.booking_date)} |{" "}
-                        {changeTime(props.start_time)} -
-                        {changeTime(props.end_time)}
+                        {cutSeconds(props.start_time)} -
+                        {cutSeconds(props.end_time)}
                       </div>
                     </div>
-                    <div className="w-full flex flex-col gap-1 md:w-[48%]">
+
+                    <div className="w-[500px] flex flex-col gap-1 md:w-[48%]">
                       <div className="text-thirdGray text-[13px] font-medium md:text-[14px]">
                         Duration:
                       </div>
