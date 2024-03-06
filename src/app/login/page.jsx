@@ -50,9 +50,7 @@ const LoginPage = () => {
     try {
       const redirect_to = "/auth/callback";
       const user = await signInWithProvider(provider, redirect_to);
-    } catch (error) {
-
-    }
+    } catch (error) {}
   }
   //   }
   useEffect(() => {
@@ -90,8 +88,7 @@ const LoginPage = () => {
         } else {
           sessionStorage.setItem("session_token", session.access_token);
         }
-      } catch (error) {
-      }
+      } catch (error) {}
     }
   }
   return (
@@ -201,43 +198,30 @@ const LoginPage = () => {
                 </span>
                 <span className="flex-grow bg-gray-200 rounded h-[1px]"></span>
               </h3>
-
-              <div className="text-center">
-                <div className="flex gap-[12px] justify-between">
-                  {/* <button
-                    className="flex justify-center gap-[10px] bg-[#F6F6F9] text-black w-1/2 rounded-[99px] px-[24px] py-[12px] h-[34px] sm:h-[48px]"
-                    onClick={() => handleOauthSignIn("twitter")}
-                  >
-                    <span className="flex items-center">
-                      <Image src={xIcon} alt="x icon" />
-                    </span>
-                    <span className="sm:block hidden text-[16px] font-[700] leading-[24px]">
-                      X
-                    </span>
-                  </button> */}
-                  <button
-                    className="flex justify-center gap-[10px] bg-[#F6F6F9]  text-black w-[100%] rounded-[99px] px-[24px] py-[6px] sm:py-[12px] h-[34px] sm:h-[48px]"
-                    onClick={() => handleOauthSignIn("google")}
-                  >
-                    <span>
-                      <Image src={Googleicon} alt="Google_icon" />
-                    </span>
-                    <span className="sm:block hidden text-[16px] font-[700] leading-[24px]">
-                      Gmail
-                    </span>
-                  </button>
-                </div>
-              </div>
-
-              <div className="text-center mt-[10px] ">
-                <p className="text-[14px] sm:text-[16px] font-[700] leading-[24px]">
-                  Don&apos;t have any account?{" "}
-                  <Link href="/register">
-                    <span className="text-secondOrange">Register</span>
-                  </Link>
-                </p>
-              </div>
             </form>
+            <div className="text-center">
+              <div className="flex gap-[12px] justify-between">
+                <button
+                  className="flex justify-center gap-[10px] bg-[#F6F6F9]  text-black w-[100%] rounded-[99px] px-[24px] py-[6px] sm:py-[12px] h-[34px] sm:h-[48px]"
+                  onClick={() => handleOauthSignIn("google")}
+                >
+                  <span>
+                    <Image src={Googleicon} alt="Google_icon" />
+                  </span>
+                  <span className="sm:block hidden text-[16px] font-[700] leading-[24px]">
+                    Gmail
+                  </span>
+                </button>
+              </div>
+            </div>
+            <div className="text-center mt-[10px] ">
+              <p className="text-[14px] sm:text-[16px] font-[700] leading-[24px]">
+                Don&apos;t have any account?{" "}
+                <Link href="/register">
+                  <span className="text-secondOrange">Register</span>
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
 
